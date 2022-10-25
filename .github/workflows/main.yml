@@ -1,0 +1,19 @@
+name: Manual Inputs
+on: 
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Environment
+        default: dev
+        required: true
+        
+defaults:
+  run:
+    working-directory: ./12-hel
+jobs:
+  bump-version:
+    name: Bump Package Version
+    runs-on: ubuntu-latest
+    steps:
+      - name: Example variable usage
+        run: git tag ${{ github.event.inputs.version }}
